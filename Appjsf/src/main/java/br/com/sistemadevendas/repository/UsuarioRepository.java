@@ -62,6 +62,7 @@ public class UsuarioRepository implements Serializable {
 			usuarioModel = new UsuarioModel();
 			usuarioModel.setCodigo(usuarioEntity.getCodigo());
 			usuarioModel.setUsuario(usuarioEntity.getUsuario()); 
+			usuarioModel.setSenha(usuarioEntity.getSenha());
 			
 			usuariosModel.add(usuarioModel);
 		}
@@ -95,6 +96,7 @@ public class UsuarioRepository implements Serializable {
 		
 		usuarioModel.setCodigo(usuarioEntity.getCodigo());
 		usuarioModel.setUsuario(usuarioEntity.getUsuario()); 
+		usuarioModel.setSenha(usuarioEntity.getSenha());
  
 		entityManager.merge(usuarioEntity);
 	}

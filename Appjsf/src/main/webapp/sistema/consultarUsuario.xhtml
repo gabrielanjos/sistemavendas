@@ -13,6 +13,18 @@
 <ui:composition template="/template/layoutBase.xhtml">
  
 	<ui:define name="content">
+	
+	<p:dialog header="Editar cadastro de usuario" 
+				  id="dialog-modal-editar" 
+		   		  widgetVar="dialog-modal-editar" 
+		   		  modal="true" 
+		   		  height="400px"
+		   		  width="550px">
+ 
+    		 <ui:include src="/sistema/editarUsuario.xhtml"/>
+ 
+ 
+		</p:dialog>
  
 		
 		<h:form style="margin:auto;margin-left:2%;" id="form-consulta">

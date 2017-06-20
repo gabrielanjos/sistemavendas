@@ -16,8 +16,8 @@ import javax.persistence.Table;
 @NamedQueries({
 	 
 	@NamedQuery(name = "UsuarioEntity.findAll",query= "SELECT u FROM UsuarioEntity u"),
-	@NamedQuery(name = "UsuarioEntity.findUser", 
-    query= "SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.senha = :senha")
+	
+	@NamedQuery(name = "UsuarioEntity.findUser",query= "SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.senha = :senha")
 
  
 })

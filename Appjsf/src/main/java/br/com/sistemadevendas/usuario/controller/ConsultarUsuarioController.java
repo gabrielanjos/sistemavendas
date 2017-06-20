@@ -12,7 +12,7 @@ import javax.inject.Named;
 import br.com.sistemadevendas.model.UsuarioModel;
 import br.com.sistemadevendas.repository.UsuarioRepository;
  
-@Named(value="ConsultarUsuarioController")
+@Named(value="consultarUsuarioController")
 @ViewScoped
 public class ConsultarUsuarioController implements Serializable {
  
