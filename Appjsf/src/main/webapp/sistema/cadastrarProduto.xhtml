@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+</h:head>
+ 
+<ui:composition template="/template/layoutBase.xhtml">
+ 
+ 
+	<ui:define name="content">
+ 
+		   <p:tabView style="width:600px;height:370px;margin:auto;">
+		   
+	 		 	<p:tab title="Cadastro de Produto">
+ 
+	 		 	<h:form id="form-cadastro">	 	
+ 
+	 		 	<h:panelGrid id="panelGrid-campos-form" columns="2" cellpadding="10">
+ 
+	 		 			<p:outputLabel value="Nome" for="inputText-nome"/>
+	            		<p:inputText id="inputText-nome" 
+	            				  style="width:300px" maxlength="70" 
+	            				  value="#{produtoController.produtoModel.nome}"
+	            				  required="true"
+	            				  requiredMessage="O nome da categoria é de preenchimento obrigatório"/>
+	            				  
+	            		<p:outputLabel value="Tamanho" for="inputText-tamanho"/>
+	            		<p:inputText id="inputText-tamanho" 
+	            				  style="width:300px" maxlength="70" 
+	            				  value="#{produtoController.produtoModel.tamanho}"
+	            				  required="true"
+	            				  requiredMessage="O Tamanho do produto é de preenchimento obrigatório"/>
+	            				  
+	            		<p:outputLabel value="Valor" for="inputText-valor"/>
+	            		<p:inputText id="inputText-valor" 
+	            				  style="width:300px" maxlength="70" 
+	            				  value="#{produtoController.produtoModel.valor}"
+	            				  required="true"
+	            				  onkeydown="mascara(this,inputText-valor)"
+	            				  requiredMessage="O Valor do produto é de preenchimento obrigatório"/>		  		  
+ 
+	            		       		
+  
+	            		<p:spacer/>
+ 
+	            		<p:commandButton value="Salvar" 
+	            				 id="commandButton-salvar"
+						 icon="ui-icon-gear"
+						 actionListener="#{categoriaController.SalvarCategoria}"
+						 update="panelGrid-campos-form"/>
+						  
+	 		 	</h:panelGrid>
+ 
+	 		 		<p:messages showDetail="true" autoUpdate="true" closable="true" severity="warn"/>
+	 		 		<p:messages autoUpdate="true" closable="true" severity="error"/>		
+		   			<p:messages showDetail="true" autoUpdate="true" closable="true" severity="info"/>
+ 
+	 		 		</h:form>
+	 		 		
+	 			 </p:tab>		
+
+	 		</p:tabView>
+ 
+	</ui:define>
+ 
+</ui:composition>
+<script>
+function mascara(o,f){ 
+	v_obj=o 
+	v_fun=f 
+	setTimeout("execmascara()",1) 
+} 
+function execmascara(){ 
+	v_obj.value=v_fun(v_obj.value) 
+} 
+function moeda(v){ 
+	v=v.replace(/\D/g,""); // permite digitar apenas numero 
+	v=v.replace(/(\d{1})(\d{15})$/,"$1.$2") // coloca ponto antes dos ultimos digitos 
+	v=v.replace(/(\d{1})(\d{11})$/,"$1.$2") // coloca ponto antes dos ultimos 11 digitos 
+	v=v.replace(/(\d{1})(\d{8})$/,"$1.$2") // coloca ponto antes dos ultimos 8 digitos 
+	v=v.replace(/(\d{1})(\d{5})$/,"$1.$2") // coloca ponto antes dos ultimos 5 digitos 
+	v=v.replace(/(\d{1})(\d{1,2})$/,"$1,$2") // coloca virgula antes dos ultimos 2 digitos 
+	return v; 
+}
+
+</script>
+ 
+</html>
