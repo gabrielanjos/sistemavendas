@@ -1,4 +1,6 @@
 package br.com.sistemadevendas.repository.entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import java.io.Serializable;
 
@@ -35,6 +37,12 @@ public class UsuarioEntity implements Serializable {
  
 	@Column(name="ds_senha")
 	private String senha;
+	
+	//TESTE
+	@Column(name="tipoUsuario")
+	@Enumerated(EnumType.STRING)
+	private TipoUsuarioEntity tipoUsuario;
+	//TESTE
  
 	public String getCodigo() {
 		return codigo;
@@ -54,5 +62,14 @@ public class UsuarioEntity implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	// TESTE
+	public TipoUsuarioEntity getTipoUsuario() {
+		return tipoUsuario;
+	}
+	public void setTipoUsuario(TipoUsuarioEntity tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	//
  
 }

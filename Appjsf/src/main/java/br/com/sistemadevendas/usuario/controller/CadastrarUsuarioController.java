@@ -6,6 +6,7 @@ import javax.inject.Named;
  
 import br.com.sistemadevendas.model.UsuarioModel;
 import br.com.sistemadevendas.repository.UsuarioRepository;
+import br.com.sistemadevendas.repository.entity.TipoUsuarioEntity;
 import br.com.sistemadevendas.usuario.controller.UsuarioController;
 import br.com.sistemadevendas.uteis.Uteis;
  
@@ -22,7 +23,6 @@ public class CadastrarUsuarioController {
 	@Inject
 	UsuarioRepository usuarioRepository;
  
- 
 	public UsuarioModel getUsuarioModel() {
 		return usuarioModel;
 	}
@@ -30,19 +30,30 @@ public class CadastrarUsuarioController {
 	public void setUsuarioModel(UsuarioModel usuarioModel) {
 		this.usuarioModel = usuarioModel;
 	}
+	
+	/*Aqui método que acesso no selectOneMenu*/
+	public TipoUsuarioEntity[] getTipoUsuarios(){
+		return TipoUsuarioEntity.values();
+	}
+	
  
 	/**
 	 *SALVA UM NOVO REGISTRO VIA INPUT 
 	 */
 	public void SalvarNovoUsuario(){
  
- 
 		usuarioRepository.SalvarNovoRegistro(this.usuarioModel);
  
-		this.usuarioModel = null;
+		//this.usuarioModel = null;
+		
+		this.usuarioModel.setSenha(null);
+		this.usuarioModel.setUsuario(null);
+		this.usuarioModel.setTipoUsuario(null);
  
 		Uteis.MensagemInfo("Registro cadastrado com sucesso");
  
 	}
+	
+	
  
 }

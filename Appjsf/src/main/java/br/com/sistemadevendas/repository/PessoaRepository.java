@@ -125,6 +125,7 @@ public class PessoaRepository {
 		pessoaEntity.setSexo(pessoaModel.getSexo());
  
 		entityManager.merge(pessoaEntity);
+		
 	}
 	
 	/***

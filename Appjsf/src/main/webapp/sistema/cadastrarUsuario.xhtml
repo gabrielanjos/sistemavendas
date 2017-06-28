@@ -36,7 +36,17 @@
 	            			     maxlength="80" 
 	            			     value="#{cadastrarUsuarioController.usuarioModel.senha}"
 	            			     required="true"
-	            			     requiredMessage="A senha é de preenchimento obrigatório"/>           		
+	            			     requiredMessage="A senha é de preenchimento obrigatório"/>
+	            		
+	            		<p:outputLabel value="Tipo de Usuário" for="input-tipoUsuario" />
+						<p:selectOneMenu
+										id="input-tipoUsuario" 
+										value="#{cadastrarUsuarioController.usuarioModel.tipoUsuario}" 
+										required="true"
+										requiredMessage="O Tipo de Usuário é de preenchimento obrigatório"> 										
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{cadastrarUsuarioController.tipoUsuarios}" var="a" itemValue="#{a}" itemLabel="#{a.label}"/>
+						</p:selectOneMenu>           		
   
 	            		<p:spacer/>
  

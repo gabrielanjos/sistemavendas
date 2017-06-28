@@ -11,6 +11,7 @@ import javax.inject.Named;
  
 import br.com.sistemadevendas.model.UsuarioModel;
 import br.com.sistemadevendas.repository.UsuarioRepository;
+import br.com.sistemadevendas.repository.entity.TipoUsuarioEntity;
  
 @Named(value="consultarUsuarioController")
 @ViewScoped
@@ -38,6 +39,11 @@ public class ConsultarUsuarioController implements Serializable {
 	}
 	public void setUsuarioModel(UsuarioModel usuarioModel) {
 		this.usuarioModel = usuarioModel;
+	}
+	
+	/*Aqui método que acesso no selectOneMenu*/
+	public TipoUsuarioEntity[] getTipoUsuarios(){
+		return TipoUsuarioEntity.values();
 	}
  
 	/***

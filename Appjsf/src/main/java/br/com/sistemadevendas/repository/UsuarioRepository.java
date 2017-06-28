@@ -35,6 +35,7 @@ public class UsuarioRepository implements Serializable {
 		usuarioEntity = new UsuarioEntity();
 		usuarioEntity.setUsuario(usuarioModel.getUsuario());
 		usuarioEntity.setSenha(usuarioModel.getSenha());
+		usuarioEntity.setTipoUsuario(usuarioModel.getTipoUsuario());
  
 		entityManager.persist(usuarioEntity);
  
@@ -63,6 +64,7 @@ public class UsuarioRepository implements Serializable {
 			usuarioModel.setCodigo(usuarioEntity.getCodigo());
 			usuarioModel.setUsuario(usuarioEntity.getUsuario()); 
 			usuarioModel.setSenha(usuarioEntity.getSenha());
+			usuarioModel.setTipoUsuario(usuarioEntity.getTipoUsuario());
 			
 			usuariosModel.add(usuarioModel);
 		}
@@ -94,11 +96,14 @@ public class UsuarioRepository implements Serializable {
  
 		UsuarioEntity usuarioEntity = this.GetUsuario(usuarioModel.getCodigo());
 		
-		usuarioModel.setCodigo(usuarioEntity.getCodigo());
-		usuarioModel.setUsuario(usuarioEntity.getUsuario()); 
-		usuarioModel.setSenha(usuarioEntity.getSenha());
- 
+		usuarioEntity.setCodigo(usuarioModel.getCodigo());
+		usuarioEntity.setUsuario(usuarioModel.getUsuario()); 
+		usuarioEntity.setSenha(usuarioModel.getSenha());
+		usuarioEntity.setTipoUsuario(usuarioModel.getTipoUsuario());
+		
 		entityManager.merge(usuarioEntity);
+		entityManager.flush();
+
 	}
 	
 	
