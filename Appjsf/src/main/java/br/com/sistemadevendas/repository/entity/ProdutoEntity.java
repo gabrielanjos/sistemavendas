@@ -38,6 +38,10 @@ public class ProdutoEntity {
 	@JoinColumn(name="id_produto_categoria")
 	private CategoriaEntity categoria;
 	
+	@OneToOne
+	@JoinColumn(name="id_produto_marca")
+	private MarcaEntity marca;
+	
 	
 
 	public Integer getCodigo() {
@@ -79,6 +83,16 @@ public class ProdutoEntity {
 	public void setCategoria(CategoriaEntity categoria) {
 		this.categoria = categoria;
 	}
+
+	public MarcaEntity getMarca() {
+		return marca;
+	}
+
+	public void setMarca(MarcaEntity marca) {
+		this.marca = marca;
+	}
+	
+	
 	
 	
 

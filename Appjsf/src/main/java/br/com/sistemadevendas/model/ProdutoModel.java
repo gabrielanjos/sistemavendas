@@ -1,8 +1,9 @@
 package br.com.sistemadevendas.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ProdutoModel {
+public class ProdutoModel implements Serializable {
 	
 	private int codigo;
 	private String nome;
@@ -10,6 +11,7 @@ public class ProdutoModel {
 	private String tamanho;
 	
 	private CategoriaModel categoria;
+	private MarcaModel marca;
 	
 	public ProdutoModel(){}
 
@@ -52,6 +54,16 @@ public class ProdutoModel {
 	public void setCategoria(CategoriaModel categoria) {
 		this.categoria = categoria;
 	}
+
+	public MarcaModel getMarca() {
+		return marca;
+	}
+
+	public void setMarcaModel(MarcaModel marca) {
+		this.marca = marca;
+	}
+	
+	
 	
 	
 

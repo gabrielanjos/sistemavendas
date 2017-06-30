@@ -1,7 +1,13 @@
 package br.com.sistemadevendas.model;
 
-public class MarcaModel {
+import java.io.Serializable;
+
+public class MarcaModel implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer codigo;
 	private String nome;
 	
@@ -22,5 +28,26 @@ public class MarcaModel {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	 @Override
+	    public boolean equals(Object obj) {
+	        if (this == obj)
+	            return true;
+	        if (obj == null)
+	            return false;
+	        if (getClass() != obj.getClass())
+	            return false;
+	        MarcaModel other = (MarcaModel) obj;
+	        if (codigo == null) {
+	            if (other.codigo != null)
+	                return false;
+	        } else if (!codigo.equals(other.codigo))
+	            return false;
+	        return true;
+	    }
+	    @Override
+	    public String toString() {
+	        return "MarcaModel [codigo=" + codigo + ", nome=" + nome + "]";
+	    }
 
 }

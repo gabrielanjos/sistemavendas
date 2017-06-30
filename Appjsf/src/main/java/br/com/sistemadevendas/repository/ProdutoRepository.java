@@ -9,8 +9,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.sistemadevendas.model.CategoriaModel;
+import br.com.sistemadevendas.model.MarcaModel;
 import br.com.sistemadevendas.model.ProdutoModel;
 import br.com.sistemadevendas.repository.entity.CategoriaEntity;
+import br.com.sistemadevendas.repository.entity.MarcaEntity;
 import br.com.sistemadevendas.repository.entity.ProdutoEntity;
 import br.com.sistemadevendas.uteis.Uteis;
  
@@ -37,7 +39,12 @@ public class ProdutoRepository {
 		cat.setNome(produtoModel.getCategoria().getNome());
 		cat.setCodigo(produtoModel.getCategoria().getCodigo());
 		
+		MarcaEntity m = new MarcaEntity();
+		m.setNome(produtoModel.getMarca().getNome());
+		m.setCodigo(produtoModel.getMarca().getCodigo());
+		
 		produtoEntity.setCategoria(cat);
+		produtoEntity.setMarca(m);
 		produtoEntity.setValor(produtoModel.getValor());
 	
 		entityManager.persist(produtoEntity);
@@ -71,7 +78,12 @@ public class ProdutoRepository {
 			cat.setNome(produtoEntity.getCategoria().getNome());
 			cat.setCodigo(produtoEntity.getCategoria().getCodigo());
 			
+			MarcaModel m = new MarcaModel();
+			m.setNome(produtoEntity.getMarca().getNome());
+			m.setCodigo(produtoEntity.getMarca().getCodigo());
+			
 			produtoModel.setCategoria(cat);
+			produtoModel.setMarcaModel(m);
 			produtoModel.setValor(produtoEntity.getValor());
 			
 			produtoModels.add(produtoModel);
@@ -111,7 +123,12 @@ public class ProdutoRepository {
 		cat.setNome(produtoModel.getCategoria().getNome());
 		cat.setCodigo(produtoModel.getCategoria().getCodigo());
 		
+		MarcaEntity m = new MarcaEntity();
+		m.setNome(produtoModel.getMarca().getNome());
+		m.setCodigo(produtoModel.getMarca().getCodigo());
+		
 		produtoEntity.setCategoria(cat);
+		produtoEntity.setMarca(m);
 		produtoEntity.setValor(produtoModel.getValor());
  
 		entityManager.merge(produtoEntity);

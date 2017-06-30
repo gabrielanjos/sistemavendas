@@ -37,14 +37,35 @@
 	            				  required="true"
 	            				  requiredMessage="O Tamanho do produto é de preenchimento obrigatório"/>
 	            				  
-	            		<p:outputLabel value="Valor" for="inputText-valor"/>
+	           <!--  		<p:outputLabel value="Valor" for="inputText-valor"/>
 	            		<p:inputText id="inputText-valor" 
 	            				  style="width:300px" maxlength="70" 
 	            				  value="#{produtoController.produtoModel.valor}"
 	            				  required="true"
 	            				  onkeydown="mascara(this,inputText-valor)"
-	            				  requiredMessage="O Valor do produto é de preenchimento obrigatório"/>		  		  
- 
+	            				  requiredMessage="O Valor do produto é de preenchimento obrigatório"/>	 -->	  		  
+            			
+           <!--  			<p:outputLabel value="Categoria" for="input-tipoUsuario" />
+						<p:selectOneMenu
+										id="input-tipoUsuario" 
+										value="#{produtoController.produtoModel.categoria}" 
+										required="true"
+										converter="categoriaConverter"
+										requiredMessage="A Categoria é de preenchimento obrigatório"> 										
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{produtoController.categorias}" var="a" itemValue="#{a}" itemLabel="#{a.nome}"/>
+						</p:selectOneMenu> -->
+						
+		 				<p:outputLabel value="Marca" for="input-marca" />
+						<p:selectOneMenu
+										id="input-marca" 
+										value="#{produtoController.produtoModel.marca}" 
+										required="true"
+										converter="marcaConverter"
+										requiredMessage="A marca do produto é de preenchimento obrigatório"> 										
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{produtoController.marcas}" var="b" itemValue="#{b}" itemLabel="#{b.nome}"/>
+						</p:selectOneMenu>    
 	            		       		
   
 	            		<p:spacer/>
@@ -52,7 +73,7 @@
 	            		<p:commandButton value="Salvar" 
 	            				 id="commandButton-salvar"
 						 icon="ui-icon-gear"
-						 actionListener="#{categoriaController.SalvarCategoria}"
+						 actionListener="#{produtoController.SalvarProduto}"
 						 update="panelGrid-campos-form"/>
 						  
 	 		 	</h:panelGrid>
