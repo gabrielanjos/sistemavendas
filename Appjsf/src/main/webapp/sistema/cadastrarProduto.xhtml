@@ -45,7 +45,7 @@
 	            				  onkeydown="mascara(this,inputText-valor)"
 	            				  requiredMessage="O Valor do produto é de preenchimento obrigatório"/>	 -->	  		  
             			
-           <!--  			<p:outputLabel value="Categoria" for="input-tipoUsuario" />
+           			   <p:outputLabel value="Categoria" for="input-tipoUsuario" />
 						<p:selectOneMenu
 										id="input-tipoUsuario" 
 										value="#{produtoController.produtoModel.categoria}" 
@@ -54,19 +54,19 @@
 										requiredMessage="A Categoria é de preenchimento obrigatório"> 										
 							<f:selectItem itemLabel="Selecione" />
 							<f:selectItems value="#{produtoController.categorias}" var="a" itemValue="#{a}" itemLabel="#{a.nome}"/>
-						</p:selectOneMenu> -->
+						</p:selectOneMenu> 
 						
-		 				<p:outputLabel value="Marca" for="input-marca" />
+						   <p:outputLabel value="Marca" for="input-marca" />
 						<p:selectOneMenu
 										id="input-marca" 
 										value="#{produtoController.produtoModel.marca}" 
-										required="true"
-										converter="marcaConverter"
-										requiredMessage="A marca do produto é de preenchimento obrigatório"> 										
+										
+										converter="marcaConverter"> 										
 							<f:selectItem itemLabel="Selecione" />
-							<f:selectItems value="#{produtoController.marcas}" var="b" itemValue="#{b}" itemLabel="#{b.nome}"/>
-						</p:selectOneMenu>    
-	            		       		
+							<f:selectItems value="#{produtoController.marcas}" var="a" itemValue="#{a}" itemLabel="#{a.nome}"/>
+						</p:selectOneMenu> 
+						
+            		       		
   
 	            		<p:spacer/>
  

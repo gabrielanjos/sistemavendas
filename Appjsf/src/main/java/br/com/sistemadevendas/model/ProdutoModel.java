@@ -63,8 +63,5 @@ public class ProdutoModel implements Serializable {
 		this.marca = marca;
 	}
 	
-	
-	
-	
 
 }
