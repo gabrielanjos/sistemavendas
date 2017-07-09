@@ -15,7 +15,7 @@
  
 	<ui:define name="content">
  
-		   <p:tabView style="width:600px;height:370px;margin:auto;">
+		   <p:tabView style="width:600px;height:420px;margin:auto;">
 		   
 	 		 	<p:tab title="Cadastro de Cliente">
  
@@ -30,8 +30,9 @@
 	            				  required="true"
 	            				  requiredMessage="O nome da categoria é de preenchimento obrigatório"/>
 	            				  
-						 <p:outputLabel for="button" value="Button:" />
-        				 <p:calendar id="button" value="#{clienteController.clienteModel.dataNascimento}" showOn="button" />	            				  
+						 <p:outputLabel for="DataNascimento" value="Data de Nascimento" />
+        				 <p:calendar id="DataNascimento" value="#{clienteController.clienteModel.dataNascimento}" showOn="button" required="true"
+	            				  requiredMessage="A data de nascimento é de preenchimento obrigatório"/>	            				  
 	            				  
 						<p:outputLabel value="CPF" for="inputText-cpf"/>
 	            		<p:inputText id="inputText-cpf" 
