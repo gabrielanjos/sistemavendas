@@ -22,7 +22,7 @@
 		   		  height="400px"
 		   		  width="550px">
  
-    		 <ui:include src="/sistema/editarPessoa.xhtml"/>
+    		 <ui:include src="/sistema/editarProduto.xhtml"/>
  
  
 		</p:dialog>
@@ -39,8 +39,7 @@
                                                  rowsPerPageTemplate="5,10,15"
                                                  style="width:98%;">
  
-				        <p:column headerText="Código" filterBy="#{produto.codigo}" filterEvent="enter" filterStyle="width: 70px;"
-				        >
+				        <p:column headerText="Código" filterBy="#{produto.codigo}" filterEvent="enter" filterStyle="width: 70px;"				        >
             				<h:outputText value="#{produto.codigo}" />
         				</p:column>
  
@@ -51,6 +50,19 @@
         				<p:column headerText="Tamanho" filterBy="#{produto.tamanho}" filterEvent="enter" filterStyle="width: 70px;">
             				<h:outputText value="#{produto.tamanho}" />
         				</p:column>
+        				
+        				<p:column headerText="Valor" filterBy="#{produto.valor}" filterEvent="enter" filterStyle="width: 70px;">
+            				<h:outputText value="#{produto.valor}" />
+        				</p:column>
+        				
+        				<p:column headerText="Categoria" filterBy="#{produto.categoria}" filterEvent="enter" filterStyle="width: 70px;">
+            				<h:outputText value="#{produto.categoria.nome}" />
+        				</p:column>
+        				
+        				<p:column headerText="Marca" filterBy="#{produto.marca}" filterEvent="enter" filterStyle="width: 70px;">
+            				<h:outputText value="#{produto.marca.nome}" />
+        				</p:column>
+ 
  
         				
  

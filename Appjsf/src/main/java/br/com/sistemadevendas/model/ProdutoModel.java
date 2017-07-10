@@ -1,10 +1,14 @@
 package br.com.sistemadevendas.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+
 
 public class ProdutoModel implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int codigo;
 	private String nome;
 	private Double valor;
@@ -59,7 +63,7 @@ public class ProdutoModel implements Serializable {
 		return marca;
 	}
 
-	public void setMarcaModel(MarcaModel marca) {
+	public void setMarca(MarcaModel marca) {
 		this.marca = marca;
 	}
 	

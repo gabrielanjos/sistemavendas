@@ -44,7 +44,7 @@ public class ProdutoRepository {
 		m.setCodigo(produtoModel.getMarca().getCodigo());
 		
 		produtoEntity.setCategoria(cat);
-		produtoEntity.setMarca(m);
+		produtoEntity.setMarcaEntity(m);
 		produtoEntity.setValor(produtoModel.getValor());
 	
 		entityManager.persist(produtoEntity);
@@ -79,11 +79,11 @@ public class ProdutoRepository {
 			cat.setCodigo(produtoEntity.getCategoria().getCodigo());
 			
 			MarcaModel m = new MarcaModel();
-			m.setNome(produtoEntity.getMarca().getNome());
-			m.setCodigo(produtoEntity.getMarca().getCodigo());
+			m.setNome(produtoEntity.getMarcaEntity().getNome());
+			m.setCodigo(produtoEntity.getMarcaEntity().getCodigo());
 			
 			produtoModel.setCategoria(cat);
-			produtoModel.setMarcaModel(m);
+			produtoModel.setMarca(m);
 			produtoModel.setValor(produtoEntity.getValor());
 			
 			produtoModels.add(produtoModel);
@@ -118,6 +118,7 @@ public class ProdutoRepository {
 		produtoEntity = new ProdutoEntity();
 		produtoEntity.setNome(produtoModel.getNome());
 		produtoEntity.setTamanho(produtoModel.getTamanho());
+		produtoEntity.setValor(produtoModel.getValor());
 		
 		CategoriaEntity cat = new CategoriaEntity();
 		cat.setNome(produtoModel.getCategoria().getNome());
@@ -128,9 +129,8 @@ public class ProdutoRepository {
 		m.setCodigo(produtoModel.getMarca().getCodigo());
 		
 		produtoEntity.setCategoria(cat);
-		produtoEntity.setMarca(m);
-		produtoEntity.setValor(produtoModel.getValor());
- 
+		produtoEntity.setMarcaEntity(m);
+
 		entityManager.merge(produtoEntity);
 	}
 	

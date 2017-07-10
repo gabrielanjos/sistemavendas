@@ -1,6 +1,5 @@
 package br.com.sistemadevendas.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -75,6 +74,13 @@ public class ProdutoController {
 	public void setMarcas(List<MarcaModel> marcas) {
 		this.marcas = marcas;
 	}
+	
+	@PostConstruct
+	public void init(){
+ 
+		//RETORNAR AS PESSOAS CADASTRADAS
+		this.produtos = produtoRepository.GetProdutos();
+	}
 
 	/**
 	 *SALVA UM NOVO REGISTRO VIA INPUT 
@@ -86,6 +92,34 @@ public class ProdutoController {
 		this.produtoModel = null;
  
 		Uteis.MensagemInfo("Registro cadastrado com sucesso");
+ 
+	}
+	
+	public void Editar(ProdutoModel produtoModel){
+		this.produtoModel = produtoModel;
+	}
+	
+	/***
+	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
+	 */
+	public void AlterarRegistro(){
+ 
+		this.produtoRepository.AlterarRegistro(this.produtoModel);	
+ 
+ 
+		/*RECARREGA OS REGISTROS*/
+		this.init();
+	}
+	
+	/***
+	 * EXCLUINDO UM REGISTRO
+	 * @param pessoaModel
+	 */
+	public void Excluir(ProdutoModel produtoModel){
+ 
+		//EXCLUI A PESSOA DO BANCO DE DADOS
+		this.produtoRepository.ExcluirRegistro(produtoModel.getCodigo());
+		this.produtos.remove(produtoModel);
  
 	}
 	

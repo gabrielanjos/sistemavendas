@@ -1,7 +1,5 @@
 package br.com.sistemadevendas.repository.entity;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,7 +8,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Entity;
 
+@Entity
 @Table(name="tb_produto")
 
 @NamedQueries({
@@ -84,11 +84,11 @@ public class ProdutoEntity {
 		this.categoria = categoria;
 	}
 
-	public MarcaEntity getMarca() {
+	public MarcaEntity getMarcaEntity() {
 		return marca;
 	}
 
-	public void setMarca(MarcaEntity marca) {
+	public void setMarcaEntity(MarcaEntity marca) {
 		this.marca = marca;
 	}
 	
