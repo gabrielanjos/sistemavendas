@@ -71,6 +71,7 @@ public class ProdutoRepository {
 		for (ProdutoEntity produtoEntity : pessoasEntity) {
  
 			produtoModel = new ProdutoModel();
+			produtoModel.setCodigo(produtoEntity.getCodigo());
 			produtoModel.setNome(produtoEntity.getNome());
 			produtoModel.setTamanho(produtoEntity.getTamanho());
 			
@@ -142,8 +143,8 @@ public class ProdutoRepository {
  
 		entityManager =  Uteis.JpaEntityManager();		
  
-		ProdutoEntity pessoaEntity = this.GetProduto(codigo);
+		ProdutoEntity produtoEntity = this.GetProduto(codigo);
  
-		entityManager.remove(pessoaEntity);
+		entityManager.remove(produtoEntity);
 	}
 }
