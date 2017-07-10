@@ -34,10 +34,7 @@ public class ClienteModel implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
-	
-	
+
 	 public String getEndereco() {
 		return endereco;
 	}
@@ -102,12 +99,13 @@ public class ClienteModel implements Serializable {
 	            return false;
 	        return true;
 	    }
-	    @Override
-	    public String toString() {
-	        return "ClienteModel [codigo=" + codigo + ", nome=" + nome 
-	        		+  ", endereco=" + endereco + ", dataNascimento=" + dataNascimento 
-	        		+", cep=" + cep +", cpf=" + cpf +", numero=" + numero +", telefone=" + telefone
-	        		+"]";
-	    }
+
+	@Override
+	public String toString() {
+		return "ClienteModel [codigo=" + codigo + ", nome=" + nome + ", endereco=" + endereco + ", dataNascimento="
+				+ dataNascimento + ", cpf=" + cpf + ", cep=" + cep + ", numero=" + numero + ", telefone=" + telefone
+				+ "]";
+	}
+
 
 }
