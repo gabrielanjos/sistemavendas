@@ -20,6 +20,7 @@ import javax.persistence.Table;
 })
 public class VendaEntity  {
 	
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "id_venda")
@@ -27,10 +28,10 @@ public class VendaEntity  {
 	@Column(name = "quantidade")
 	private int  quantidade;
 	@OneToOne
-	@JoinColumn(name="id_produto_marca")
+	@JoinColumn(name="id_cliente")
 	private ClienteEntity cliente;
 	@OneToOne
-	@JoinColumn(name="id_produto_marca")
+	@JoinColumn(name="id_produto")
 	private ProdutoEntity produto;
 	@Column(name = "data_venda")
 	private String dataVenda;
@@ -112,6 +113,4 @@ public class VendaEntity  {
 	
 	
 
-	
-	
 }
