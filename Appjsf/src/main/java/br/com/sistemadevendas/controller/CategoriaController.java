@@ -1,10 +1,12 @@
 package br.com.sistemadevendas.controller;
 
+import java.io.Serializable;
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import br.com.sistemadevendas.model.CategoriaModel;
@@ -12,9 +14,14 @@ import br.com.sistemadevendas.repository.CategoriaRepository;
 import br.com.sistemadevendas.uteis.Uteis;
  
 @Named(value="categoriaController")
-@RequestScoped
-public class CategoriaController {
+@ViewScoped
+public class CategoriaController implements Serializable{
  
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Inject transient
 	CategoriaModel categoriaModel;
@@ -22,15 +29,15 @@ public class CategoriaController {
 	@Produces 
 	private List<CategoriaModel> categorias;
  
-	@Inject
+	@Inject transient
 	CategoriaRepository categoriaRepository;
  		
 	public CategoriaModel getCategoriaModel() {
 		return categoriaModel;
 	}
  
-	public void setCategoriaModel(CategoriaModel pessoaModel) {
-		this.categoriaModel = pessoaModel;
+	public void setCategoriaModel(CategoriaModel categoriaModel) {
+		this.categoriaModel = categoriaModel;
 	}
 	
 	
@@ -81,7 +88,7 @@ public class CategoriaController {
 	
 	/***
 	 * EXCLUINDO UM REGISTRO
-	 * @param pessoaModel
+	 * @param categoriaModel
 	 */
 	public void Excluir(CategoriaModel categoriaModel){
  

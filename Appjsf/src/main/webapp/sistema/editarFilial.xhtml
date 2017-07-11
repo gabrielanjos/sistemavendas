@@ -12,8 +12,8 @@
 	<p:inputText   id="inputText-codigo" 
 	               style="width:300px" maxlength="70" 
 	               value="#{filialController.filialModel.codigo}"
-	               readonly = "true"
-	               required="false"/>
+	               required="true"
+	               readonly = "true"/>
  
  
 	<p:outputLabel value="Nome" for="inputText-nome"/>
@@ -22,7 +22,7 @@
 	               value="#{filialController.filialModel.nome}"
 	               required="true"
 	               requiredMessage="O usuario é de preenchimento obrigatório"/>
-
+	<p:spacer/>
 	<p:commandButton value="Alterar" 
 	            	 id="commandButton-alterar"
 			 icon="ui-icon-gear"
@@ -31,7 +31,7 @@
 		         update="form-consulta"/> 
  
  
-        <p:spacer/>
+        
 	<p:messages showDetail="false" autoUpdate="true" closable="true" severity="error"/>
  
      </h:panelGrid>                  

@@ -1,6 +1,5 @@
 package br.com.sistemadevendas.repository;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,11 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.sistemadevendas.model.CategoriaModel;
-import br.com.sistemadevendas.model.PessoaModel;
-import br.com.sistemadevendas.model.UsuarioModel;
 import br.com.sistemadevendas.repository.entity.CategoriaEntity;
-import br.com.sistemadevendas.repository.entity.PessoaEntity;
-import br.com.sistemadevendas.repository.entity.UsuarioEntity;
 import br.com.sistemadevendas.uteis.Uteis;
  
 public class CategoriaRepository {
@@ -26,14 +21,14 @@ public class CategoriaRepository {
  
 	/***
 	 * MÉTODO RESPONSÁVEL POR SALVAR UMA NOVA PESSOA
-	 * @param pessoaModel
+	 * @param categoriaModel
 	 */
-	public void SalvarNovoRegistro(CategoriaModel pessoaModel){
+	public void SalvarNovoRegistro(CategoriaModel categoriaModel){
  
 		entityManager =  Uteis.JpaEntityManager();
 
 		categoriaEntity = new CategoriaEntity();
-		categoriaEntity.setNome(pessoaModel.getNome());
+		categoriaEntity.setNome(categoriaModel.getNome());
 		
  
 		entityManager.persist(categoriaEntity);
@@ -87,15 +82,16 @@ public class CategoriaRepository {
 	 * ALTERA UM REGISTRO CADASTRADO NO BANCO DE DADOS
 	 * @param pessoaModel
 	 */
-	public void AlterarRegistro(CategoriaModel pessoaModel){
+	public void AlterarRegistro(CategoriaModel categoriaModel){
  
 		entityManager =  Uteis.JpaEntityManager();
  
-		CategoriaEntity pessoaEntity = this.GetCategoria(pessoaModel.getCodigo());
-		pessoaEntity.setNome(pessoaModel.getNome());
+		CategoriaEntity categoriaEntity = this.GetCategoria(categoriaModel.getCodigo());
+		categoriaEntity.setCodigo(categoriaModel.getCodigo());
+		categoriaEntity.setNome(categoriaModel.getNome());
 		
  
-		entityManager.merge(pessoaEntity);
+		entityManager.merge(categoriaEntity);
 	}
 	
 	/***

@@ -86,11 +86,12 @@ public class FilialRepository {
  
 		entityManager =  Uteis.JpaEntityManager();
  
-		FilialEntity pessoaEntity = this.GetFilial(filialModel.getCodigo());
-		pessoaEntity.setNome(filialModel.getNome());
+		FilialEntity filialEntity = this.GetFilial(filialModel.getCodigo());
+		filialEntity.setCodigo(filialModel.getCodigo());
+		filialEntity.setNome(filialModel.getNome());
 		
  
-		entityManager.merge(pessoaEntity);
+		entityManager.merge(filialEntity);
 	}
 	
 	/***

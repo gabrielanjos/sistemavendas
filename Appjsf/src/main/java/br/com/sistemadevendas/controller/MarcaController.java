@@ -1,9 +1,12 @@
 package br.com.sistemadevendas.controller;
 
+import java.io.Serializable;
+
 import java.util.List;
+
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import br.com.sistemadevendas.model.MarcaModel;
@@ -11,9 +14,14 @@ import br.com.sistemadevendas.repository.MarcaRepository;
 import br.com.sistemadevendas.uteis.Uteis;
  
 @Named(value="marcaController")
-@RequestScoped
-public class MarcaController {
+@ViewScoped
+public class MarcaController implements Serializable{
  
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Inject transient
 	MarcaModel marcaModel;
@@ -21,7 +29,7 @@ public class MarcaController {
 	@Produces 
 	private List<MarcaModel> marcas;
  
-	@Inject
+	@Inject transient
 	MarcaRepository marcaRepository;
  		
 	public MarcaModel getMarcaModel() {
@@ -70,6 +78,7 @@ public class MarcaController {
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
 	public void AlterarRegistro(){
+		
  
 		this.marcaRepository.AlterarRegistro(this.marcaModel);	
  
@@ -80,7 +89,7 @@ public class MarcaController {
 	
 	/***
 	 * EXCLUINDO UM REGISTRO
-	 * @param pessoaModel
+	 * @param marcaModel
 	 */
 	public void Excluir(MarcaModel marcaModel){
  

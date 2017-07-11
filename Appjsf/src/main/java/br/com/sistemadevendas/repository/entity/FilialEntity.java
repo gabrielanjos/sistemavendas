@@ -24,7 +24,7 @@ public class FilialEntity {
 	@Column(name = "id_filial")
 	private Integer 		codigo;
  
-	@Column(name = "nm_categoria")
+	@Column(name = "nm_filial")
 	private String  		nome;
  
 	public Integer getCodigo() {

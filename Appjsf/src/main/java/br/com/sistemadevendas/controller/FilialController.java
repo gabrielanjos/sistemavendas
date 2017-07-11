@@ -1,9 +1,11 @@
 package br.com.sistemadevendas.controller;
 
+import java.io.Serializable;
+
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,9 +14,14 @@ import br.com.sistemadevendas.repository.FilialRepository;
 import br.com.sistemadevendas.uteis.Uteis;
  
 @Named(value="filialController")
-@RequestScoped
-public class FilialController {
+@ViewScoped
+public class FilialController implements Serializable{
  
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Inject transient
 	FilialModel filialModel;
@@ -22,7 +29,7 @@ public class FilialController {
 	@Produces 
 	private List<FilialModel> filiais;
  
-	@Inject
+	@Inject transient
 	FilialRepository filialRepository;
  		
 	public FilialModel getFilialModel() {
@@ -83,7 +90,7 @@ public class FilialController {
 	
 	/***
 	 * EXCLUINDO UM REGISTRO
-	 * @param pessoaModel
+	 * @param filialModel
 	 */
 	public void Excluir(FilialModel filialModel){
  
