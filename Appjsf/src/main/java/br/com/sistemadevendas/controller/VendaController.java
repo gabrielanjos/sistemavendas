@@ -50,7 +50,8 @@ public class VendaController {
 
 	public double getValor() {
 		
-		try {
+		try { 
+			// assim que muda o valor de quantidade chama aqui para fazer a quantdade * valor do produto
 			return vendaModel.getProduto().getValor() * vendaModel.getQuantidade();
 		} catch (Exception e) {
 			return 0.0;
