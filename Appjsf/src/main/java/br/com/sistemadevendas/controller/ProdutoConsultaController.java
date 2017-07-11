@@ -1,10 +1,12 @@
 package br.com.sistemadevendas.controller;
 
-import java.util.List;
+import java.io.Serializable;
 
+import java.util.List;
+ 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -14,12 +16,12 @@ import br.com.sistemadevendas.model.ProdutoModel;
 import br.com.sistemadevendas.repository.CategoriaRepository;
 import br.com.sistemadevendas.repository.MarcaRepository;
 import br.com.sistemadevendas.repository.ProdutoRepository;
-import br.com.sistemadevendas.uteis.Uteis;
  
 @Named(value="consultarProdutoController")
-@RequestScoped
-public class ProdutoConsultaController {
+@ViewScoped
+public class ProdutoConsultaController implements Serializable{
  
+	private static final long serialVersionUID = 1L;
 
 	@Inject transient
 	ProdutoModel produtoModel;
@@ -33,7 +35,7 @@ public class ProdutoConsultaController {
 	@Produces 
 	private List<MarcaModel> marcas;
  
-	@Inject
+	@Inject transient
 	ProdutoRepository produtoRepository;
 	
 	
@@ -86,7 +88,7 @@ public class ProdutoConsultaController {
  
 	/**
 	 *SALVA UM NOVO REGISTRO VIA INPUT 
-	 */
+	 
 	public void SalvarCategoria(){
 		
 		produtoRepository.SalvarNovoRegistro(this.produtoModel);
@@ -95,10 +97,11 @@ public class ProdutoConsultaController {
  
 		Uteis.MensagemInfo("Registro cadastrado com sucesso");
  
-	}
+	}*/
 	
 	public void Editar(ProdutoModel produtoModel){
 		this.produtoModel = produtoModel;
+		System.out.println("Controller Editar: "+this.produtoModel.getCodigo());
 	}
  
 	/***
@@ -108,6 +111,7 @@ public class ProdutoConsultaController {
  
 		this.produtoRepository.AlterarRegistro(this.produtoModel);	
  
+		System.out.println("Controller AlterarRegistro: "+this.produtoModel.getCodigo());
  
 		/*RECARREGA OS REGISTROS*/
 		this.init();

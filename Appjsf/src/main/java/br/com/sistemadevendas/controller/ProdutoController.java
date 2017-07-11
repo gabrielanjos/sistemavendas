@@ -1,10 +1,12 @@
 package br.com.sistemadevendas.controller;
 
+import java.io.Serializable;
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,9 +19,10 @@ import br.com.sistemadevendas.repository.ProdutoRepository;
 import br.com.sistemadevendas.uteis.Uteis;
  
 @Named(value="produtoController")
-@RequestScoped
-public class ProdutoController {
+@ViewScoped
+public class ProdutoController implements Serializable{
  
+	private static final long serialVersionUID = 1L;
 
 	@Inject transient
 	ProdutoModel produtoModel;
@@ -33,7 +36,7 @@ public class ProdutoController {
 	@Produces 
 	private List<MarcaModel> marcas;
  
-	@Inject
+	@Inject transient
 	ProdutoRepository produtoRepository;
 	
 	
@@ -52,8 +55,6 @@ public class ProdutoController {
 	public void setProdutos(List<ProdutoModel> produtos) {
 		this.produtos = produtos;
 	}
-
-	
  
 	public List<CategoriaModel> getCategorias() {
 		CategoriaRepository r = new CategoriaRepository();
@@ -65,8 +66,6 @@ public class ProdutoController {
 		this.categorias = categorias;
 	}
 	
-	
-
 	public List<MarcaModel> getMarcas() {
 		return new MarcaRepository().GetMarcas();
 	}
@@ -94,8 +93,5 @@ public class ProdutoController {
 		Uteis.MensagemInfo("Registro cadastrado com sucesso");
  
 	}
-	
-
-	
 
 }

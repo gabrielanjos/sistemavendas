@@ -117,6 +117,7 @@ public class ProdutoRepository {
 		ProdutoEntity produtoEntity = this.GetProduto(produtoModel.getCodigo());
  
 		produtoEntity = new ProdutoEntity();
+		produtoEntity.setCodigo(produtoModel.getCodigo());
 		produtoEntity.setNome(produtoModel.getNome());
 		produtoEntity.setTamanho(produtoModel.getTamanho());
 		produtoEntity.setValor(produtoModel.getValor());
