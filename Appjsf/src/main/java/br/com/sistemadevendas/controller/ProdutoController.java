@@ -78,7 +78,7 @@ public class ProdutoController {
 	@PostConstruct
 	public void init(){
  
-		//RETORNAR AS PESSOAS CADASTRADAS
+		//RETORNAR OS PRODUTOS CADASTRADOS
 		this.produtos = produtoRepository.GetProdutos();
 	}
 
@@ -95,33 +95,7 @@ public class ProdutoController {
  
 	}
 	
-	public void Editar(ProdutoModel produtoModel){
-		this.produtoModel = produtoModel;
-	}
-	
-	/***
-	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
-	 */
-	public void AlterarRegistro(){
- 
-		this.produtoRepository.AlterarRegistro(this.produtoModel);	
- 
- 
-		/*RECARREGA OS REGISTROS*/
-		this.init();
-	}
-	
-	/***
-	 * EXCLUINDO UM REGISTRO
-	 * @param pessoaModel
-	 */
-	public void Excluir(ProdutoModel produtoModel){
- 
-		//EXCLUI A PESSOA DO BANCO DE DADOS
-		this.produtoRepository.ExcluirRegistro(produtoModel.getCodigo());
-		this.produtos.remove(produtoModel);
- 
-	}
+
 	
 
 }

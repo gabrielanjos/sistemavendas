@@ -24,8 +24,8 @@ public class ProdutoRepository {
 	EntityManager entityManager;
  
 	/***
-	 * MÉTODO RESPONSÁVEL POR SALVAR UMA NOVA PESSOA
-	 * @param pessoaModel
+	 * MÉTODO RESPONSÁVEL POR SALVAR UM NOVO PRODUTO
+	 * @param produtoModel
 	 */
 	public void SalvarNovoRegistro(ProdutoModel produtoModel){
  
@@ -52,7 +52,7 @@ public class ProdutoRepository {
 	}
  
 	/***
-	 * MÉTODO PARA CONSULTAR A PESSOA
+	 * MÉTODO PARA CONSULTAR PRODUTO
 	 * @return
 	 */
 	public List<ProdutoModel> GetProdutos(){
@@ -64,11 +64,11 @@ public class ProdutoRepository {
 		Query query = entityManager.createNamedQuery("ProdutoEntity.findAll");
  
 		@SuppressWarnings("unchecked")
-		Collection<ProdutoEntity> pessoasEntity = (Collection<ProdutoEntity>)query.getResultList();
+		Collection<ProdutoEntity> produtosEntity = (Collection<ProdutoEntity>)query.getResultList();
  
 		ProdutoModel produtoModel = null;
  
-		for (ProdutoEntity produtoEntity : pessoasEntity) {
+		for (ProdutoEntity produtoEntity : produtosEntity) {
  
 			produtoModel = new ProdutoModel();
 			produtoModel.setCodigo(produtoEntity.getCodigo());
@@ -95,7 +95,7 @@ public class ProdutoRepository {
 	}
 	
 	/***
-	 * CONSULTA UMA PESSOA CADASTRADA PELO CÓDIGO
+	 * CONSULTA UM PRODUTO CADASTRADO PELO CÓDIGO
 	 * @param codigo
 	 * @return
 	 */
@@ -108,7 +108,7 @@ public class ProdutoRepository {
  
 	/***
 	 * ALTERA UM REGISTRO CADASTRADO NO BANCO DE DADOS
-	 * @param pessoaModel
+	 * @param produtoModel
 	 */
 	public void AlterarRegistro(ProdutoModel produtoModel){
  
@@ -132,6 +132,7 @@ public class ProdutoRepository {
 		produtoEntity.setCategoria(cat);
 		produtoEntity.setMarcaEntity(m);
 
+		System.out.println("Teste Alterar Registro "+produtoEntity.getCodigo()+" "+produtoModel.getNome());
 		entityManager.merge(produtoEntity);
 	}
 	
@@ -144,6 +145,8 @@ public class ProdutoRepository {
 		entityManager =  Uteis.JpaEntityManager();		
  
 		ProdutoEntity produtoEntity = this.GetProduto(codigo);
+		
+		System.out.println("Teste Excluir Registro "+produtoEntity.getCodigo()+" "+produtoEntity.getNome());
  
 		entityManager.remove(produtoEntity);
 	}

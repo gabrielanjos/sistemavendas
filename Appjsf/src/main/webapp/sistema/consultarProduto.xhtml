@@ -15,7 +15,7 @@
  
 	<ui:define name="content">
  
-		<p:dialog header="Editar cadastro de produto" 
+		<p:dialog header="Editar produto" 
 				  id="dialog-modal-editar" 
 		   		  widgetVar="dialog-modal-editar" 
 		   		  modal="true" 
@@ -31,7 +31,7 @@
  
 			<p:dataTable id="dataTable-registros"
 						 var="produto" 
-						 value="#{produtoConsultaController.produtos}" 
+						 value="#{consultarProdutoController.produtos}" 
 						 rows="15"
 						 paginator="true"
 						 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
@@ -71,7 +71,7 @@
         				       <p:commandButton icon="ui-icon-pencil" 
         				    				    title="Editar Produto"                        					 
                         					    ajax="true"                        					 
-                        					    actionListener="#{produtoConsultaController.Editar(produto)}"
+                        					    actionListener="#{consultarProdutoController.Editar(produto)}"
                         					    oncomplete="PF('dialog-modal-editar').show();" 
                         					    update="dialog-modal-editar"/>
  
@@ -82,7 +82,7 @@
         				    <p:commandButton icon="ui-icon-trash" 
         				    		     title="Excluir Registro"                        					 
                         					 ajax="true"
-                        					 actionListener="#{produtoConsultaController.Excluir(produto)}"
+                        					 actionListener="#{consultarProdutoController.Excluir(produto)}"
                         					 update="@form" />
  
         				 </p:column>

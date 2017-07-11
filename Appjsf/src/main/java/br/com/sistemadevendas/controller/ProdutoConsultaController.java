@@ -7,11 +7,16 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import br.com.sistemadevendas.model.CategoriaModel;
+import br.com.sistemadevendas.model.MarcaModel;
 import br.com.sistemadevendas.model.ProdutoModel;
+import br.com.sistemadevendas.repository.CategoriaRepository;
+import br.com.sistemadevendas.repository.MarcaRepository;
 import br.com.sistemadevendas.repository.ProdutoRepository;
 import br.com.sistemadevendas.uteis.Uteis;
  
-@Named(value="produtoConsultaController")
+@Named(value="consultarProdutoController")
 @RequestScoped
 public class ProdutoConsultaController {
  
@@ -21,6 +26,12 @@ public class ProdutoConsultaController {
 	
 	@Produces 
 	private List<ProdutoModel> produtos;
+	
+	@Produces 
+	private List<CategoriaModel> categorias;
+	
+	@Produces 
+	private List<MarcaModel> marcas;
  
 	@Inject
 	ProdutoRepository produtoRepository;
@@ -41,6 +52,27 @@ public class ProdutoConsultaController {
 	public void setProdutos(List<ProdutoModel> produtos) {
 		this.produtos = produtos;
 	}
+	
+	public List<CategoriaModel> getCategorias() {
+		CategoriaRepository r = new CategoriaRepository();
+		return r.GetCategorias();
+		
+	}
+
+	public void setCategorias(List<CategoriaModel> categorias) {
+		this.categorias = categorias;
+	}
+	
+	
+
+	public List<MarcaModel> getMarcas() {
+		return new MarcaRepository().GetMarcas();
+	}
+
+	public void setMarcas(List<MarcaModel> marcas) {
+		this.marcas = marcas;
+	}
+
 
 	@PostConstruct
 	public void init(){
@@ -78,16 +110,16 @@ public class ProdutoConsultaController {
  
  
 		/*RECARREGA OS REGISTROS*/
-		//this.init();
+		this.init();
 	}
 	
 	/***
 	 * EXCLUINDO UM REGISTRO
-	 * @param pessoaModel
+	 * @param produtoModel
 	 */
 	public void Excluir(ProdutoModel produtoModel){
  
-		//EXCLUI A PESSOA DO BANCO DE DADOS
+		//EXCLUI O PRODUTO DO BANCO DE DADOS
 		this.produtoRepository.ExcluirRegistro(produtoModel.getCodigo());
 		this.produtos.remove(produtoModel);
  
