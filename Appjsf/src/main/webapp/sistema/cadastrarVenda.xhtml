@@ -34,7 +34,7 @@
 						
 						<p:outputLabel value="Produto" for="input-produto" />
 						<p:selectOneMenu id="input-produto"
-							value="#{cadastrarVendaController.vendaModel.produto}"
+							value="#{cadastrarVendaController.produtoModel}"
 							converter="produtoConverter">
 							<f:selectItem itemLabel="Selecione" />
 							<f:selectItems value="#{cadastrarVendaController.produtos}" var="p"
@@ -43,7 +43,8 @@
 						
 						 <p:outputLabel for="console" value="Forma de pagamento" />
         				<p:selectOneMenu id="console" value="#{cadastrarVendaController.vendaModel.formaPagamento}" style="width:125px">
-          					  <f:selectItem itemLabel="AVista" itemValue="Avista" />
+        					  <f:selectItem itemLabel="Selecione" />
+          					  <f:selectItem itemLabel="Avista" itemValue="Avista" />
             				  <f:selectItem itemLabel="Crediario" itemValue="Crediario" />
             				  <f:selectItem itemLabel="Cartão de Credito" itemValue="Cartão de Credito" />
             				<f:selectItem itemLabel="Cartão de debito" itemValue="Cartão de debito" />
@@ -58,12 +59,15 @@
 	            				  requiredMessage="O quantidade de produto é de preenchimento obrigatório">
 	            				  <p:ajax update="inputText-vlr" /> </p:inputText>
 
-							<p:outputLabel value="Nome" for="inputText-vlr"/>
+							<p:outputLabel value="Valor" for="inputText-vlr"/>
 	            		<p:inputText id="inputText-vlr" 
 	            				  style="width:300px" 
-	            				  value="#{cadastrarVendaController.vendaModel.quantidade}"
-	            				  required="true"
+	            				  value="#{cadastrarVendaController.valorString}"
+	            			
 	            				  requiredMessage="O nome da marca é de preenchimento obrigatório"/>
+	            				  
+	            				  <p:commandButton value="Calcular Valor" id="commandButton-calc"
+							icon="ui-icon-gear" update="inputText-vlr" actionListener="#{cadastrarVendaController.Calcular}" />
  
 
 

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -37,8 +37,41 @@ public class VendaController implements Serializable {
 
 	@Inject transient
 	VendaRepository vendaRepository;
+	
+	private Double valor;
+	private String valorString;
+	private Double valorUnitario;
+	private ProdutoModel produtoModel;
  
+	
+	
+	
+	
  
+	public String getValorString() {
+		return valorString;
+	}
+
+	public void setValorString(String valorString) {
+		this.valorString = valorString;
+	}
+
+	public Double getValorUnitario() {
+		return valorUnitario;
+	}
+
+	public void setValorUnitario(Double valorUnitario) {
+		this.valorUnitario = valorUnitario;
+	}
+
+	public ProdutoModel getProdutoModel() {
+		return produtoModel;
+	}
+
+	public void setProdutoModel(ProdutoModel produtoModel) {
+		this.produtoModel = produtoModel;
+	}
+
 	public VendaModel getVendaModel() {
 		return vendaModel;
 	}
@@ -73,7 +106,18 @@ public class VendaController implements Serializable {
 	public void setProdutos(List<ProdutoModel> produtos) {
 		this.produtos = produtos;
 	}
+	
+	
 
+
+	public Double getValor() {
+		return valor;
+	
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
 
 	@PostConstruct
 	public void init(){
@@ -89,13 +133,33 @@ public class VendaController implements Serializable {
 	 *SALVA UM NOVO REGISTRO VIA INPUT 
 	 */
 	public void Salvar(){
-		
+		vendaModel.setProduto(produtoModel);
+		vendaModel.setValor(valor);
+		vendaModel.setDataVenda("11-07-2017");
+		vendaModel.setUsuario("admin");
+		vendaModel.setCliente(new ClienteRepository().GetClientes().get(0));
 	
 		vendaRepository.SalvarNovoRegistro(this.vendaModel);
  
 		this.vendaModel = null;
+		this.produtoModel = null;
+		this.valorString = null;
  
 		Uteis.MensagemInfo("Registro cadastrado com sucesso");
+ 
+	}
+	
+	public void Calcular(){
+		
+		
+		try {
+			  valor = produtoModel.getValor() * vendaModel.getQuantidade();
+			valorString = "Valor total do produto: R$"  + valor + " Valor unitario: R$" +  produtoModel.getValor() ;
+			
+			
+		} catch (Exception e) {
+			valor = 0.1;
+		}
  
 	}
  
