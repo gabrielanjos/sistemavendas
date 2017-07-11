@@ -21,10 +21,10 @@ public class ClienteEntity {
  
 	@Id
 	@GeneratedValue
-	@Column(name = "id_filial")
+	@Column(name = "id_clientel")
 	private Integer	codigo;
  
-	@Column(name = "nm_categoria")
+	@Column(name = "nm_cliente")
 	private String nome;
 	
 	@Column(name = "endereco")

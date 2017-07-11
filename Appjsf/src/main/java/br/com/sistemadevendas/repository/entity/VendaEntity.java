@@ -28,16 +28,16 @@ public class VendaEntity  {
 	@Column(name = "quantidade")
 	private int  quantidade;
 	@OneToOne
-	@JoinColumn(name="id_cliente")
+	@JoinColumn(name="id_cliente_venda")
 	private ClienteEntity cliente;
 	@OneToOne
-	@JoinColumn(name="id_produto")
+	@JoinColumn(name="id_produto_venda")
 	private ProdutoEntity produto;
 	@Column(name = "data_venda")
 	private String dataVenda;
 	@Column(name = "forma_pagamento")
 	private String formaPagamento;
-	@Column(name = "usuario_logado")
+	@Column(name = "usuario_logado_venda")
 	private String usuario;
 	@Column(name = "valor_venda")
 	private double valor;

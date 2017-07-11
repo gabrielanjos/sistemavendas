@@ -17,24 +17,14 @@ public class ProdutoModel implements Serializable {
 	private CategoriaModel categoria;
 	private MarcaModel marca;
 	
-	public ProdutoModel(){}
-
-	
-	
 
 	public Integer getCodigo() {
 		return codigo;
 	}
 
-
-
-
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
-
-
-
 
 	public String getNome() {
 		return nome;
@@ -76,12 +66,27 @@ public class ProdutoModel implements Serializable {
 		this.marca = marca;
 	}
 
+	 @Override
+	    public boolean equals(Object obj) {
+	        if (this == obj)
+	            return true;
+	        if (obj == null)
+	            return false;
+	        if (getClass() != obj.getClass())
+	            return false;
+	        ProdutoModel other = (ProdutoModel) obj;
+	        if (codigo == null) {
+	            if (other.codigo != null)
+	                return false;
+	        } else if (!codigo.equals(other.codigo))
+	            return false;
+	        return true;
+	    }
+	
 	@Override
 	public String toString() {
 		return "ProdutoModel [codigo=" + codigo + ", nome=" + nome + ", valor=" + valor + ", tamanho=" + tamanho
 				+ ", categoria=" + categoria + ", marca=" + marca + "]";
 	}
-	
-	
 
 }

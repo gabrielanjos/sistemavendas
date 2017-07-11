@@ -2,13 +2,13 @@ package br.com.sistemadevendas.model;
 
 import java.io.Serializable;
 
-public class VendaModel implements Serializable {
+
+public class VendaModel2 implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	private Integer codigo;
 	private int  quantidade;
 	private ClienteModel cliente;
@@ -19,11 +19,13 @@ public class VendaModel implements Serializable {
 	private Double valor;
 	
 
-	
 
-	public Integer getCodigo() {
+	
+	
+	 public Integer getCodigo() {
 		return codigo;
 	}
+
 
 
 
@@ -35,9 +37,11 @@ public class VendaModel implements Serializable {
 
 
 
+
 	public int getQuantidade() {
 		return quantidade;
 	}
+
 
 
 
@@ -49,9 +53,11 @@ public class VendaModel implements Serializable {
 
 
 
+
 	public ClienteModel getCliente() {
 		return cliente;
 	}
+
 
 
 
@@ -63,9 +69,11 @@ public class VendaModel implements Serializable {
 
 
 
+
 	public ProdutoModel getProduto() {
 		return produto;
 	}
+
 
 
 
@@ -77,9 +85,11 @@ public class VendaModel implements Serializable {
 
 
 
+
 	public String getUsuario() {
 		return usuario;
 	}
+
 
 
 
@@ -91,9 +101,11 @@ public class VendaModel implements Serializable {
 
 
 
+
 	public String getDataVenda() {
 		return dataVenda;
 	}
+
 
 
 
@@ -105,9 +117,11 @@ public class VendaModel implements Serializable {
 
 
 
+
 	public String getFormaPagamento() {
 		return formaPagamento;
 	}
+
 
 
 
@@ -119,6 +133,7 @@ public class VendaModel implements Serializable {
 
 
 
+
 	public Double getValor() {
 		return valor;
 	}
@@ -126,9 +141,11 @@ public class VendaModel implements Serializable {
 
 
 
+
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+
 
 
 
@@ -141,7 +158,7 @@ public class VendaModel implements Serializable {
 	            return false;
 	        if (getClass() != obj.getClass())
 	            return false;
-	        VendaModel other = (VendaModel) obj;
+	        VendaModel2 other = (VendaModel2) obj;
 	        if (codigo == null) {
 	            if (other.codigo != null)
 	                return false;
@@ -153,18 +170,14 @@ public class VendaModel implements Serializable {
 
 
 
+
 	@Override
 	public String toString() {
-		return "VendaModel [codigo=" + codigo + ", quantidade=" + quantidade + ", cliente=" + cliente + ", produto="
+		return "VendaModel2 [codigo=" + codigo + ", quantidade=" + quantidade + ", cliente=" + cliente + ", produto="
 				+ produto + ", usuario=" + usuario + ", dataVenda=" + dataVenda + ", formaPagamento=" + formaPagamento
 				+ ", valor=" + valor + "]";
 	}
-
-
-
-
 	
 
-	
 
 }
