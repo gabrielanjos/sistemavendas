@@ -7,52 +7,50 @@
     <h:form>
  
        <h:panelGrid id="panelGrid-campos-form" columns="2" cellpadding="10">
+			
+			<p:outputLabel value="Código" for="inputText-nome"/>
+	 		<p:inputText   id="inputText-codigo"
+	 					   value="#{consultarUsuarioController.usuarioModel.codigo}"
+	 					   style="width:50px"
+	 					   readonly="true"/>
  
-	 <p:outputLabel value="Código" for="inputText-nome"/>
-	 <p:inputText   id="inputText-codigo"
-	 		value="#{consultarUsuarioController.usuarioModel.codigo}"
-	 		style="width:50px"
-	 		readonly="true"/>
- 
- 
-	<p:outputLabel value="Usuario" for="inputText-nome"/>
-	<p:inputText   id="inputText-nome" 
-	               style="width:300px" maxlength="70" 
-	               value="#{consultarUsuarioController.usuarioModel.usuario}"
-	               required="true"
-	               requiredMessage="O usuario é de preenchimento obrigatório"/>
+			<p:outputLabel value="Usuario" for="inputText-nome"/>
+			<p:inputText   id="inputText-nome" 
+	        			   style="width:300px" maxlength="70" 
+	               		   value="#{consultarUsuarioController.usuarioModel.usuario}"
+	              		   required="true"
+	               		   requiredMessage="O usuario é de preenchimento obrigatório"/>
 	 
-	 <p:outputLabel value="Senha" for="inputText-senha"/>
-	<p:password   id="inputText-senha" 
-	               style="width:300px" maxlength="70" 
-	               value="#{consultarUsuarioController.usuarioModel.senha}"
-	               required="true"
-	               requiredMessage="A senha é de preenchimento obrigatório"/>
+	 		<p:outputLabel value="Senha" for="inputText-senha"/>
+			<p:password   id="inputText-senha" 
+	        	          style="width:300px" maxlength="70" 
+	               		  value="#{consultarUsuarioController.usuarioModel.senha}"
+	               		  redisplay="true"
+	               		  required="true"
+	               		  requiredMessage="O usuario é de preenchimento obrigatório"/>
 	
-	<p:outputLabel value="Tipo de Usuário" for="input-tipoUsuario" />
-	<p:selectOneMenu
-					id="input-tipoUsuario" 
-					value="#{consultarUsuarioController.usuarioModel.tipoUsuario}" 
-					required="true"
-					requiredMessage="O Tipo de Usuário é de preenchimento obrigatório"> 
-		<f:selectItem itemLabel="#{consultarUsuarioController.usuarioModel.tipoUsuario}" />										
-		<f:selectItems value="#{consultarUsuarioController.tipoUsuarios}" var="a" itemValue="#{a}" itemLabel="#{a.label}"/>
-	</p:selectOneMenu>   
+			<p:outputLabel value="Tipo de Usuário" for="input-tipoUsuario" />
+			<p:selectOneMenu
+				          id="input-tipoUsuario" 
+						  value="#{consultarUsuarioController.usuarioModel.tipoUsuario}" 
+						  required="true"
+						  requiredMessage="O Tipo de Usuário é de preenchimento obrigatório"> 
+				<f:selectItem itemLabel="#{consultarUsuarioController.usuarioModel.tipoUsuario}" />										
+				<f:selectItems value="#{consultarUsuarioController.tipoUsuarios}" var="a" itemValue="#{a}" itemLabel="#{a.label}"/>
+			</p:selectOneMenu>   
  
+        	<p:spacer/>
+        
+        	<p:commandButton value="Alterar" 
+	                         id="commandButton-alterar"
+						 	 icon="ui-icon-gear"
+						 	 actionListener="#{consultarUsuarioController.AlterarRegistro}"
+						 	 oncomplete="PF('dialog-modal-editar').hide();"
+						 	 update="form-consulta"/>
 
-	<p:commandButton value="Alterar" 
-	            	 id="commandButton-alterar"
-			 icon="ui-icon-gear"
-	   actionListener="#consultarUsuarioController.AlterarRegistro"							 
-			 oncomplete="PF('dialog-modal-editar').hide();"
-		         update="form-consulta"/> 
+			<p:messages showDetail="false" autoUpdate="true" closable="true" severity="error"/>
+	</h:panelGrid>                  
  
- 
-        <p:spacer/>
-	<p:messages showDetail="false" autoUpdate="true" closable="true" severity="error"/>
- 
-     </h:panelGrid>                  
- 
-    </h:form>
+  </h:form>
  
 </ui:composition>

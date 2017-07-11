@@ -70,10 +70,11 @@ public class ConsultarUsuarioController implements Serializable {
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
 	public void AlterarRegistro(){
+		
+		System.out.println("Teste");
  
 		this.usuarioRepository.AlterarRegistro(this.usuarioModel);	
- 
- 
+		 
 		/*RECARREGA OS REGISTROS*/
 		this.init();
 	}
@@ -83,6 +84,8 @@ public class ConsultarUsuarioController implements Serializable {
 	 * @param usuarioModel
 	 */
 	public void ExcluirUsuario(UsuarioModel usuarioModel){
+		
+		System.out.println("Teste Excluir");
  
 		//EXCLUI O USUARIO DO BANCO DE DADOS
 		this.usuarioRepository.ExcluirRegistro(usuarioModel.getCodigo());
