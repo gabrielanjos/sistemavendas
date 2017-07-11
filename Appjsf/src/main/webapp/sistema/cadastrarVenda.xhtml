@@ -33,14 +33,45 @@
 							<f:selectItems value="#{vendaController.clientes}" var="a"
 								itemValue="#{a}" itemLabel="#{a.nome}" />
 						</p:selectOneMenu>
+						
+						<p:outputLabel value="Produto" for="input-produto" />
+						<p:selectOneMenu id="input-produto"
+							value="#{vendaController.vendaModel.produto}"
+							converter="produtoConverter">
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{vendaController.produtos}" var="p"
+								itemValue="#{p}" itemLabel="#{p.nome}" />
+						</p:selectOneMenu>
+						
+						 <p:outputLabel for="console" value="Forma de pagamento" />
+        				<p:selectOneMenu id="console" value="#{vendaController.vendaModel.formaPagamento}" style="width:125px">
+          					  <f:selectItem itemLabel="Avista" itemValue="Avista" />
+            				  <f:selectItem itemLabel="Crediario" itemValue="Crediario" />
+            				  <f:selectItem itemLabel="Cartão de Credito" itemValue="Cartão de Credito" />
+            				<f:selectItem itemLabel="Cartão de debito" itemValue="Cartão de debito" />
+        				</p:selectOneMenu>
+						
+						<p:outputLabel value="Quantidade do produto" for="inputText-qtd"/>
+	            		<p:inputText id="inputText-qtd" 
+	            				  style="width:300px" maxlength="70" 
+	            				  value="#{vendaController.vendaModel.quantidade}"
+	            				  required="true"
+	            				  type="number"
+	            				  requiredMessage="O quantidade de produto é de preenchimento obrigatório">
+	            				  <p:ajax update="inputText-vlr" /> </p:inputText>
 
+						<p:outputLabel value="Valor" for="inputText-vlr"/>
+	            		<p:inputText id="inputText-vlr" 
+	            				  style="width:300px" maxlength="70" 
+	            				  value="#{vendaController.valor}"
+	            				 />
 
 
 
 						<p:spacer />
 
 						<p:commandButton value="Salvar" id="commandButton-salvar"
-							icon="ui-icon-gear" actionListener="#{clienteController.Salvar}"
+							icon="ui-icon-gear" actionListener="#{vendaController.SalvarVenda}"
 							update="panelGrid-campos-form" />
 
 					</h:panelGrid>

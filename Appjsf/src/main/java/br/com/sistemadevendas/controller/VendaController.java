@@ -9,9 +9,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import br.com.sistemadevendas.model.CategoriaModel;
 import br.com.sistemadevendas.model.ClienteModel;
+import br.com.sistemadevendas.model.ProdutoModel;
 import br.com.sistemadevendas.model.VendaModel;
 import br.com.sistemadevendas.repository.CategoriaRepository;
 import br.com.sistemadevendas.repository.ClienteRepository;
+import br.com.sistemadevendas.repository.ProdutoRepository;
 import br.com.sistemadevendas.repository.VendaRepository;
 import br.com.sistemadevendas.uteis.Uteis;
  
@@ -31,6 +33,12 @@ public class VendaController {
  		
 	@Produces 
 	private List<ClienteModel> clientes;
+	
+	@Produces 
+	private List<ProdutoModel> produtos;
+	
+	private double valor;
+	
 
 	public VendaModel getVendaModel() {
 		return vendaModel;
@@ -40,8 +48,27 @@ public class VendaController {
 		this.vendaModel = vendaModel;
 	}
 
-	
+	public double getValor() {
+		
+		try {
+			return vendaModel.getProduto().getValor() * vendaModel.getQuantidade();
+		} catch (Exception e) {
+			return 0.0;
+		}
+		
+	}
 
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public List<ProdutoModel> getProdutos() {
+		return new ProdutoRepository().GetProdutos();
+	}
+
+	public void setProdutos(List<ProdutoModel> produtos) {
+		this.produtos = produtos;
+	}
 
 	public List<ClienteModel> getClientes() {
 		ClienteRepository repository = new ClienteRepository();
@@ -72,6 +99,8 @@ public class VendaController {
 	 *SALVA UM NOVO REGISTRO VIA INPUT 
 	 */
 	public void SalvarVenda(){
+		
+		vendaModel.setValor(valor);
 		
 		vendaRepository.SalvarNovoRegistro(this.vendaModel);
  
