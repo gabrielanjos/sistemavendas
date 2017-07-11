@@ -9,7 +9,7 @@ public class ProdutoModel implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int codigo;
+	private Integer codigo;
 	private String nome;
 	private Double valor;
 	private String tamanho;
@@ -19,13 +19,22 @@ public class ProdutoModel implements Serializable {
 	
 	public ProdutoModel(){}
 
-	public int getCodigo() {
+	
+	
+
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+
+
+
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+
+
+
 
 	public String getNome() {
 		return nome;
@@ -66,6 +75,13 @@ public class ProdutoModel implements Serializable {
 	public void setMarca(MarcaModel marca) {
 		this.marca = marca;
 	}
+
+	@Override
+	public String toString() {
+		return "ProdutoModel [codigo=" + codigo + ", nome=" + nome + ", valor=" + valor + ", tamanho=" + tamanho
+				+ ", categoria=" + categoria + ", marca=" + marca + "]";
+	}
+	
 	
 
 }

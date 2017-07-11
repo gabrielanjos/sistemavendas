@@ -63,7 +63,7 @@ public class VendaRepository {
 		m.setNome(vendaModel.getProduto().getMarca().getNome());
 		m.setCodigo(vendaModel.getProduto().getMarca().getCodigo());
 		produtoEntity.setCategoria(cat);
-		produtoEntity.setMarca(m);
+		produtoEntity.setMarcaEntity(m);
 		
 		vendaEntity.setProduto(produtoEntity);
 		
@@ -131,10 +131,10 @@ public class VendaRepository {
 			cat.setCodigo(vendaEntity.getProduto().getCategoria().getCodigo());
 			
 			MarcaModel m = new MarcaModel();
-			m.setNome(vendaEntity.getProduto().getMarca().getNome());
-			m.setCodigo(vendaEntity.getProduto().getMarca().getCodigo());
+			m.setNome(vendaEntity.getProduto().getMarcaEntity().getNome());
+			m.setCodigo(vendaEntity.getProduto().getMarcaEntity().getCodigo());
 			produtoModel.setCategoria(cat);
-			produtoModel.setMarcaModel(m);
+			produtoModel.setMarca(m);
 			
 			vendaModel.setProduto(produtoModel);
 			
